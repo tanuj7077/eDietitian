@@ -1,0 +1,52 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: "Courier new";
+}
+header{
+	background-image:url(../images/home1.jpg);
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+}
+ul{
+	list-style-type: none;
+	float: right;
+	margin-top: 25px;
+	margin-right: 25px;
+}
+ul li{
+	display: inline-block;
+	padding: 5px;
+}
+ul li a{
+	text-decoration: none;
+	color: #fff;
+	padding: 10px 20px;
+	border: 1px solid transparent;
+	transition: 0.3s ease; 
+}
+
+ul li a:hover{
+	background-color: #fff;
+	color: #000;
+}
+
+
+.title h1{
+	color: #fff;
+	font-size: 70px;
+	position: center;
+	position: absolute;
+	top:75%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.title h3{
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	top:85%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}

@@ -1,0 +1,290 @@
+{% load static %}
+<html>
+    <head>
+        <title>Main Page</title>
+        <link rel="stylesheet" href="{% static 'css/explorePageStyle.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!--Bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+        <!--Multiselect-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="../main"><span style="height:14px ;" class="material-icons">restaurant</span> E-Diet</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav justify-content-between">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../main">Home</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto"><!-- For alighning to right-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../accounts/logout"><i class="fa fa-sign-out"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>  
+        </nav>
+        <div id="header" class="jumbotron text-center m-0">
+            <div class="container">
+                <h1 class="display-3">E-Dietitian</h1>
+                <h2 class="display-5">EXPLORE</h2>
+                <p class="lead">This section will help you in selecting the foods which are healthy and 
+                    which foods to select to adjust the macro-nutrients according to your calculatd requirements</p>
+            </div>
+            <!--<a href="" class="btn btn-primary">Do Something</a>
+            <a href="" class="btn btn-success">Do Anything</a>-->
+        </div>
+        <div id="pro" class="container-fluid m-0">
+            <div class="text-center">
+                <h1 class="display-4 py-3 text-purple">Foods High in Protein</h1>
+                <p class="container text-justify">Protein provides the body with building blocks (amino acids) for muscle and other important structures
+                    such as the brain, nervous system, blood, skin, and hair. Protein also serves as transport for oxygen
+                    and other important nutrients. In the absence of glucose or carbohydrate, the body can reverse-process
+                    protein (a conversion called gluconeogenesis) to use as energy. Your body makes 11 amino acids—or building
+                    blocks—on its own. But there are 9 amino acids that you must consume in the daily diet because your body is 
+                    unable to make them.There are different types of protein that you might consume to get these amino acids. 
+                    Complete proteins provide all of the amino acids that your body needs in appropriate amounts. Meat, poultry, 
+                    and seafood products are the most commonly cited complete proteins. Eggs and milk are also examples of complete proteins.
+                    Incomplete proteins provide some amino acids but not all of them. Many plant-based proteins are incomplete proteins and 
+                    must be consumed together as complementary proteins in order to get all of the amino acids that the body needs. Nuts, 
+                    seeds, and (most) grains are examples of incomplete proteins.</p> 
+                <svg class="bi bi-chevron-double-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#p" role="button" aria-expanded="false" aria-controls="p">
+                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 01.708 0L8 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 01.708 0L8 8.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                </svg>          
+            </div>
+            <div id="p" class="collapse multi-collapse">
+                {%for f in foods%}
+                {% if f.bestFor == "p" %}
+                <div class="container py-3 ">
+                    <div id="cardP" class="card bg-light text-dark">
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <img id="image" class="card-img-top embed-responsive embed-responsive-16by9" src="../media/{{f.img}}">
+                            </div>
+                            <div class="col-lg-8 mb-4 px-4">
+                                <div class="d-flex flex-column justify-content-around" style="height: 100%;padding-top: 15px">
+                                    <h5 id="text-p"class="card-title">{{f.name}}</h5>
+                                    <p class="card-text text-justify">{{f.desc}}</p>
+                                    <div class="d-flex justify-content-start ">
+                                        <div class="row ml-1">
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Quantity: {{f.quantity}}{{f.unit}}</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Protein: {{f.protein}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Carbs: {{f.carbohydrate}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Fat: {{f.fat}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Calories: {{f.calorie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                
+                {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <svg class="bi bi-chevron-double-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#p" role="button" aria-expanded="false" aria-controls="p">
+                        <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 3.707 2.354 9.354a.5.5 0 11-.708-.708l6-6z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+            </div>
+        </div> 
+        <div id="vpro" class="container-fluid m-0">
+            <div class="text-center">
+                <h1 class="display-4 py-3 text-purple">Foods High in Protein for Vegetarians</h1>
+                <p class="container text-justify">Despite what some people may think, there are many ways to get enough protein on a vegan
+                    or vegetarian diet.<br>However, not all plant-based proteins are complete proteins, meaning protein sources that contain
+                    adequate amounts of all nine essential amino acids.<br>
+                    Amino acids are the building blocks of proteins. While your body can make some of them, nine have to be obtained through
+                    your diet.<br>Animal products like beef, fish, dairy, and eggs contain enough of every one of these essential amino acids.
+                    Thus, they’re considered complete proteins.<br>However, many plant sources of protein are too low in or missing one or more
+                    of these essential amino acids. They’re considered incomplete protein sources.<br>Still, given that plant foods contain
+                    varying amounts of amino acids, you can manage to get enough of each essential amino acid throughout the day by eating 
+                    a varied diet and combining complementary plant proteins.<br>For example, grains like rice are too low in lysine to be 
+                    considered a complete source of protein. Yet, by also eating lentils or beans, which are higher in lysine, throughout the 
+                    day, you can be sure to obtain all nine essential amino acids.</p>
+                <svg class="bi bi-chevron-double-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#vp" role="button" aria-expanded="false" aria-controls="vp">
+                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 01.708 0L8 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 01.708 0L8 8.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                </svg>            
+            </div>
+            <div id="vp" class="collapse multi-collapse">
+                {%for f in foods%}
+                {% if f.bestFor == "vp" %}
+                <div class="container py-3">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <img class="card-img-top embed-responsive embed-responsive-16by9" src="../media/{{f.img}}">
+                            </div>
+                            <div class="col-lg-8 mb-4 px-4">
+                                <div class="d-flex flex-column justify-content-around" style="height: 100%;padding-top: 15px">
+                                    <h5 class="card-title text-vp">{{f.name}}</h5>
+                                    <p class="card-text text-justify">{{f.desc}}</p>
+                                    <div class="d-flex justify-content-start ">
+                                        <div class="row ml-1">
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Quantity: {{f.quantity}}{{f.unit}}</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Protein: {{f.protein}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Carbs: {{f.carbohydrate}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Fat: {{f.fat}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Calories: {{f.calorie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <svg class="bi bi-chevron-double-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#vp" role="button" aria-expanded="false" aria-controls="vp">
+                        <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 3.707 2.354 9.354a.5.5 0 11-.708-.708l6-6z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+            </div>
+        </div> 
+        <div id="carb" class="container-fluid m-0">
+            <div class="text-center">
+                <h1 class="display-4 py-3 text-purple">Healthy source of Carbohydrates</h1>
+                <p class="container text-justify">Carbohydrates are the body's preferred source of fuel. It is easier for the body
+                     to convert carbohydrate into immediately usable energy than it is for the body to convert fat or protein into fuel.
+                      Your brain, your muscles, and your body's cells need carbohydrate to function. When you consume carbohydrates, the 
+                      food is converted into sugars that enter the bloodstream. Those sugars (glucose) are either used immediately for energy
+                       or stored in the body's cells for use at another time. Carbohydrates can either be complex or simple.<br>
+                        Simple carbohydrates (monosaccharides and disaccharides) are made up of either one or two sugar units and 
+                        can be broken down fairly quickly in the body. Simple carbs have a quick and fleeting impact on blood sugar
+                         levels. Blood sugar (and energy) levels typically rise quickly then drop after consuming simple carbs.<br>
+                         Complex carbohydrates (polysaccharides and oligosaccharides) are made up of long strings of sugar units that
+                          take longer to break down for use in the body. Complex carbs have a more steady impact on blood glucose levels.<br>
+                       
+                       
+                       In addition to providing fuel to the body, complex carbohydrates, particularly fiber, can help the body to maintain healthy digestive function and cholesterol levels.</p>
+                <svg class="bi bi-chevron-double-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#c" role="button" aria-expanded="false" aria-controls="c">
+                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 01.708 0L8 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 01.708 0L8 8.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                </svg>                     
+            </div>
+            <div id="c" class="collapse multi-collapse">
+                {%for f in foods%}
+                {% if f.bestFor == "c" %}
+                <div class="container py-3">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <img class="card-img-top embed-responsive embed-responsive-16by9" src="../media/{{f.img}}">
+                            </div>
+                            <div class="col-lg-8 mb-4 px-4">
+                                <div class="d-flex flex-column justify-content-around" style="height: 100%;padding-top: 15px">
+                                    <h5 class="card-title text-c">{{f.name}}</h5>
+                                    <p class="card-text text-justify">{{f.desc}}</p>
+                                    <div class="d-flex justify-content-start ">
+                                        <div class="row ml-1">
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Quantity: {{f.quantity}}{{f.unit}}</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Protein: {{f.protein}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Carbs: {{f.carbohydrate}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Fat: {{f.fat}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Calories: {{f.calorie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <svg class="bi bi-chevron-double-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#c" role="button" aria-expanded="false" aria-controls="c">
+                        <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 3.707 2.354 9.354a.5.5 0 11-.708-.708l6-6z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+            </div>
+        </div> 
+         
+        <div id="fat" class="container-fluid m-0">
+            <div class="text-center">
+                <h1 class="display-4 py-3 text-purple">Foods with Health Fats</h1>
+                <p class="container text-justify">While many people try to avoid fat in their diets, fat plays an important
+                     role in the body. Fat provides an important source of energy in times of starvation or caloric deprivation.
+                      It is also necessary for insulation, proper cell function, and protection of our vital organs.<br>
+                    While fat is necessary for a healthy body, fat can also contribute to obesity. Fat provides more energy
+                     (9 calories per gram) than carbohydrate or protein (4 calories per gram). So this macronutrient must be
+                      consumed in moderation in order to maintain a healthy weight.<br>
+                    There are different types of fat that you might consume in your daily diet. Dietary fats might be
+                     saturated or unsaturated.<br>
+                    Saturated fats come mostly from meat and dairy sources. These fats are generally solid at room temperature
+                     and tend to be shelf-stable for a longer period of time.<br>
+                    Unsaturated fats include those that are monounsaturated or polyunsaturated.
+                     Unsaturated fats come from plant-sources and provide the body with certain health
+                      benefits. These fats are generally liquid even when refrigerated and have a shorter shelf life.<br>
+                    Studies have shown that when we replace saturated fats with poly or monounsaturated fats, we decrease
+                     our risk for certain diseases including heart disease, stroke, and type 2 diabetes.<br>
+                     Another type of fat, called trans fat, is slowly getting eliminated from foods. This type
+                      of fat starts as a polyunsaturated fat and is hydrogenated to become shelf-stable. These
+                       hydrogenated fats are often used in processed baked goods like crackers, cookies, and cakes.
+                        However, health experts have advised against consumption of trans fats so food manufacturers
+                         have begun removing them from foods.<br>
+                     Most guidelines suggest that roughly 20 to 35 percent of your daily calories should come from fats.
+                      However, no more than 10 percent of your daily calories should come from saturated fats.</p>          
+                <svg class="bi bi-chevron-double-down" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#f" role="button" aria-expanded="false" aria-controls="f">
+                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 01.708 0L8 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 01.708 0L8 8.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                </svg>   
+            </div>
+            <div id="f" class="collapse multi-collapse">
+                {%for f in foods%}
+                {% if f.bestFor == "f" %}
+                <div class="container py-3">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <img class="card-img-top embed-responsive embed-responsive-16by9" src="../media/{{f.img}}">
+                            </div>
+                            <div class="col-lg-8 mb-4 px-4">
+                                <div class="d-flex flex-column justify-content-around" style="height: 100%;padding-top: 15px">
+                                    <h5 class="card-title text-f">{{f.name}}</h5>
+                                    <p class="card-text text-justify">{{f.desc}}</p>
+                                    <div class="d-flex justify-content-start ">
+                                        <div class="row ml-1">
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Quantity: {{f.quantity}}{{f.unit}}</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Protein: {{f.protein}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Carbs: {{f.carbohydrate}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Fat: {{f.fat}}g</p>
+                                            <p class="badge badge-info mr-3 py-2 mb-0 px-2 mt-1" id="stats">Calories: {{f.calorie}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                {% endif %}
+                {% endfor %}
+                <div class="text-center">
+                    <svg class="bi bi-chevron-double-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" data-toggle="collapse" href="#f" role="button" aria-expanded="false" aria-controls="f">
+                        <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 3.707 2.354 9.354a.5.5 0 11-.708-.708l6-6z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L8 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+            </div>
+        </div> 
+         
+    </body>
+</html>
